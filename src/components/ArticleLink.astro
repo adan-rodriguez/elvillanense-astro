@@ -1,0 +1,40 @@
+---
+const {
+  id,
+  image,
+  altImage,
+  datetimeAttribute,
+  datetimeContent,
+  title,
+  author,
+} = Astro.props;
+
+const { href } = Astro.site;
+---
+
+<article>
+  <a href={id}>
+    <img transition:name={id} src={image} alt={altImage} />
+    <time datetime={datetimeAttribute}>{datetimeContent}</time>
+    <h2>{title}</h2>
+  </a>
+  {
+    author && (
+      <span>
+        Por <span>{author}</span>
+      </span>
+    )
+  }
+</article>
+
+<style>
+  article {
+    max-width: 300px;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+  }
+</style>

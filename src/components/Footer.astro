@@ -1,0 +1,27 @@
+---
+import { SITE_NAME } from "@utils/constants";
+// import { DOMAIN } from "@utils/constants";
+const { hostname } = Astro.site;
+---
+
+<footer>
+  <span class="logo">{SITE_NAME}</span>
+  <!-- <span
+    >Copyright 2023 {new URL(DOMAIN).hostname} - Todos los derechos reservados</span
+  > -->
+  <span>Copyright 2023 {hostname} - Todos los derechos reservados</span>
+</footer>
+
+<style>
+  footer {
+    background-color: var(--bg-color-primary);
+    color: var(--color-primary);
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 3em;
+    font-weight: bold;
+    display: block;
+  }
+</style>

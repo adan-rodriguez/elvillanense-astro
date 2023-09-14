@@ -1,0 +1,47 @@
+---
+import { getArticles } from "@scripts/services/articles";
+import ArticleLink from "./ArticleLink.astro";
+
+const articles = getArticles();
+---
+
+{
+  articles.length === 0 ? (
+    <p>No hay noticias por el momento</p>
+  ) : (
+    <div>
+      {articles.map(function ({
+        id,
+        image,
+        altImage,
+        datetimeAttribute,
+        datetimeContent,
+        title,
+        author,
+      }) {
+        return (
+          <ArticleLink
+            {...{
+              id,
+              image,
+              altImage,
+              datetimeAttribute,
+              datetimeContent,
+              title,
+              author,
+            }}
+          />
+        );
+      })}
+    </div>
+  )
+}
+
+<style>
+  div {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+  }
+</style>

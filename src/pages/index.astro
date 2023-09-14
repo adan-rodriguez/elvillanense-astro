@@ -1,0 +1,57 @@
+---
+import Articles from "@components/Articles.astro";
+import Layout from "@layouts/Layout.astro";
+import { SITE_NAME } from "@utils/constants";
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>{`${SITE_NAME} - Portal de Noticias`}</title>
+    <meta
+      name="description"
+      content="Todas las noticias de Villa Ana y las noticias más importantes de la región, de la provincia de Santa Fe, de la Argentina y del mundo."
+    />
+    <!-- <meta name="application-name" content="El Villanense" /> -->
+    <!-- <link rel="manifest" href="/site.webmanifest" /> -->
+    <!-- <meta name="theme-color" content="#131313" /> -->
+    <!-- <meta
+      name="google-site-verification"
+      content="hXIhjWYsPdwJV_q2u8HScKlAfFDKpIXuom958hxhjNE"
+    /> -->
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="El Villanense" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" /> -->
+    <!-- <meta property="og:title" content="El Villanense" />
+    <meta
+      property="og:description"
+      content="Todas las noticias de Villa Ana y las noticias más importantes de la región, de la provincia de Santa Fe, de la Argentina y del mundo."
+    />
+    <meta property="og:url" content="https://www.elvillanense.com.ar" />
+    <meta property="og:site_name" content="El Villanense" />
+    <meta
+      property="og:image"
+      content="https://www.elvillanense.com.ar/images/logo.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="El Villanense" />
+    <meta
+      name="twitter:description"
+      content="Todas las noticias de Villa Ana y las noticias más importantes de la región, de la provincia de Santa Fe, de la Argentina y del mundo."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.elvillanense.com.ar/images/logo.png"
+    />
+    <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      href="/apple-touch-icon.png"
+      sizes="180x180"
+      type="image/png"
+    />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" /> -->
+  </Fragment>
+  <Articles />
+</Layout>

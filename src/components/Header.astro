@@ -1,0 +1,23 @@
+---
+import { SITE_NAME } from "@utils/constants";
+import "@fontsource/poppins/900.css";
+---
+
+<header>
+  <a href="/" title="Inicio">
+    <h1>{SITE_NAME}</h1>
+  </a>
+</header>
+
+<style>
+  header {
+    background-color: var(--bg-color-primary);
+    color: var(--color-primary);
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3em;
+    font-weight: 900;
+  }
+</style>

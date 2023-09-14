@@ -1,0 +1,21 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>Login - El Villanense</title>
+  </Fragment>
+  <form>
+    <input type="email" name="email" id="email" />
+    <input type="password" name="password" id="password" />
+    <button type="submit">Login</button>
+  </form>
+</Layout>
+
+<script>
+  addEventListener("submit", (event) => {
+    event.preventDefault();
+    sessionStorage.setItem("logged", "true");
+  });
+</script>

@@ -1,0 +1,100 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getArticle } from "@scripts/services/articles";
+const { article: id } = Astro.params;
+const { href } = Astro.site;
+
+let article;
+
+try {
+  article = getArticle({ id });
+} catch (error) {
+  // return Astro.redirect("/404");
+  return new Response(null, {
+    status: 404,
+    statusText: "No encontrado",
+  });
+}
+
+const {
+  title,
+  datetimeAttribute,
+  datetimeContent,
+  author,
+  lead,
+  image,
+  altImage,
+  content,
+} = article;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  headline: title,
+  image: image,
+  datePublished: datetimeAttribute,
+  ...(author && {
+    author: {
+      "@type": "Person",
+      name: author,
+      url:
+        href +
+        author
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .replace(" ", "-"),
+    },
+  }),
+  publisher: {
+    "@type": "Organization",
+    name: "El Villanense",
+    logo: "https://www.elvillanense.com.ar/images/logo.png",
+  },
+  url: href + id,
+};
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>{title}</title>
+    <meta name="description" content={lead} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+  </Fragment>
+  <article>
+    <h1>{title}</h1>
+    <time datetime={datetimeAttribute}>{datetimeContent}</time>
+    {
+      author && (
+        <span>
+          Por <span>{author}</span>
+        </span>
+      )
+    }
+    <p>{lead}</p>
+    <img transition:name={id} src={image} alt={altImage} />
+    <Fragment set:html={content} />
+  </article>
+</Layout>
+
+<style>
+  img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  article {
+    padding: 20px;
+  }
+
+  @media (width >= 992px) {
+    article {
+      width: 60%;
+    }
+  }
+</style>
