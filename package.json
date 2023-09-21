@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/vercel": "^5.0.0",
     "@fontsource/poppins": "^5.0.8",
-    "astro": "^3.0.6"
+    "astro": "^3.0.6",
+    "firebase": "^10.4.0"
   }
 }

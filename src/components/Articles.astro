@@ -2,7 +2,7 @@
 import { getArticles } from "@scripts/services/articles";
 import ArticleLink from "./ArticleLink.astro";
 
-const articles = getArticles();
+const articles = await getArticles();
 ---
 
 {
